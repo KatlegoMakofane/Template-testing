@@ -2,11 +2,12 @@ import React from 'react';
 import JSZip from 'jszip';
 // import { saveAs } from 'file-saver';
 
-const DownloadTemplate = ({ htmlContent, cssContent }) => {
+const DownloadTemplate = ({ htmlContent, cssContent ,jsContent}) => {
     const handleDownload = () => {
         const zip = new JSZip();
         zip.file('index.html', htmlContent);
         zip.file('style.css', cssContent);
+        zip.file('App.js',jsContent);
 
         zip.generateAsync({ type: 'blob' }).then((blob) => {
             const url = URL.createObjectURL(blob);
